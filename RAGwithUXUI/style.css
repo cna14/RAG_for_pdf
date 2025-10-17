@@ -1,0 +1,194 @@
+/* --- CÀI ĐẶT CHUNG --- */
+:root {
+    --bg-main: #1E1E1E;
+    --bg-sidebar: #252526;
+    --bg-input: #3C3C3C;
+    --bg-hover: #4a4a4a;
+    --text-primary: #FAFAFA;
+    --text-secondary: #A0A0A0;
+    --border-color: #444;
+    --accent-color: #D9534F;
+    --success-color: #5CB85C;
+    --border-radius: 10px;
+    --sidebar-width: 350px;
+    --transition-speed: 0.3s;
+}
+* { box-sizing: border-box; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    margin: 0;
+    display: flex;
+    overflow: hidden;
+    height: 100vh;
+}
+.app-container { display: flex; width: 100%; height: 100%; position: relative; }
+hr { border-color: var(--border-color); opacity: 0.5; }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-sidebar); }
+::-webkit-scrollbar-thumb { background: #555; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #666; }
+
+/* --- SIDEBAR --- */
+.sidebar {
+    width: var(--sidebar-width);
+    min-width: var(--sidebar-width);
+    background-color: var(--bg-sidebar);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border-color);
+    transition: margin-left var(--transition-speed) ease;
+    z-index: 10;
+}
+.sidebar.collapsed { margin-left: calc(-1 * var(--sidebar-width)); }
+.sidebar-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem; flex-shrink: 0;
+}
+.sidebar-content { padding: 0 1rem; overflow-y: auto; flex-grow: 1; }
+.sidebar-btn {
+    width: 100%; padding: 10px; background-color: var(--bg-input);
+    border: 1px solid var(--border-color); border-radius: var(--border-radius);
+    color: var(--text-primary); cursor: pointer; margin-bottom: 1rem;
+    transition: background-color var(--transition-speed);
+}
+.sidebar-btn:hover:not(:disabled) { background-color: var(--bg-hover); }
+.sidebar-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+/* Trạng thái nút Học File */
+.btn-icon .spinner {
+    border: 2px solid #f3f3f3; border-top: 2px solid var(--accent-color);
+    border-radius: 50%; width: 16px; height: 16px;
+    animation: spin 1s linear infinite; display: inline-block;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.btn-icon.success { color: var(--success-color); font-weight: bold; }
+.btn-icon.error { color: var(--accent-color); font-weight: bold; }
+
+/* Danh sách dự án */
+.project-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px; border-radius: var(--border-radius);
+    margin-bottom: 5px; transition: background-color var(--transition-speed);
+    position: relative;
+}
+.project-item.active { background-color: var(--accent-color); }
+.project-item:not(.active):hover { background-color: var(--bg-input); }
+.project-item-title, .rename-input {
+    flex-grow: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    background: none; border: none; color: var(--text-primary); font-size: 1em;
+    padding: 0; margin: 0;
+}
+.rename-input { border-bottom: 1px solid var(--accent-color); border-radius: 0; }
+.rename-input:focus { outline: none; }
+.icon-btn {
+    background: none; border: none; color: var(--text-secondary);
+    cursor: pointer; font-size: 20px; padding: 5px; border-radius: 50%;
+    transition: color var(--transition-speed), transform 0.3s ease;
+}
+.icon-btn:hover { color: var(--text-primary); }
+
+
+/* Menu tác vụ */
+.project-menu {
+    position: absolute; right: 10px; top: 40px;
+    background-color: #333; border: 1px solid var(--border-color);
+    border-radius: 5px; z-index: 100;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+.menu-item {
+    padding: 8px 12px; cursor: pointer;
+    background: none; border: none; color: var(--text-primary);
+    width: 100%; text-align: left;
+}
+.menu-item:hover { background-color: var(--accent-color); }
+
+/* Kéo & Thả */
+.file-uploader-container {
+    border: 2px dashed var(--border-color); border-radius: var(--border-radius);
+    padding: 1rem; text-align: center; margin-bottom: 1rem; transition: border-color var(--transition-speed);
+}
+.file-uploader-container.drag-over { border-color: var(--accent-color); background-color: var(--bg-input); }
+.browse-btn {
+    background-color: var(--bg-input); border: 1px solid var(--border-color);
+    padding: 5px 10px; border-radius: 5px; cursor: pointer;
+}
+
+/* Nguồn trích dẫn */
+#citation-container {
+    height: 250px; overflow-y: auto; background-color: var(--bg-main);
+    padding: 10px; border-radius: var(--border-radius);
+}
+.citation-item {
+    border-bottom: 1px solid var(--border-color); padding-bottom: 10px;
+    margin-bottom: 10px; word-wrap: break-word; font-size: 0.9em;
+}
+
+/* --- KHU VỰC CHAT CHÍNH --- */
+.main-content {
+    flex-grow: 1; display: flex; flex-direction: column; height: 100%;
+    position: relative;
+}
+#toggle-sidebar-btn {
+    position: absolute; top: 1rem; left: 1rem;
+    z-index: 101; transition: transform var(--transition-speed) ease;
+}
+#toggle-sidebar-btn.collapsed { transform: rotate(180deg); }
+
+.main-header {
+    padding: 1.2rem 2rem 1rem 2rem;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+}
+#project-title-header { margin: 0; font-size: 1.5rem; }
+
+#chat-history {
+    flex-grow: 1; overflow-y: auto; padding: 1.5rem 2rem;
+    display: flex; flex-direction: column;
+}
+.chat-message {
+    max-width: 70%; padding: 12px 18px; border-radius: 20px;
+    margin-bottom: 10px; word-wrap: break-word; line-height: 1.5;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.user-message {
+    background-color: var(--bg-input); align-self: flex-end;
+    border-bottom-right-radius: 5px;
+}
+.assistant-message {
+    background-color: #333; align-self: flex-start;
+    border-bottom-left-radius: 5px;
+}
+.chat-input-area {
+    padding: 1rem 2rem; background-color: var(--bg-main);
+    border-top: 1px solid var(--border-color);
+}
+.chat-input-form {
+    display: flex; align-items: center; gap: 10px;
+    background-color: var(--bg-input); padding: 8px; border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+#image-upload-label {
+    display: flex; justify-content: center; align-items: center;
+    width: 36px; height: 36px; background-color: var(--bg-hover);
+    border-radius: 50%; cursor: pointer; font-size: 20px;
+    transition: background-color var(--transition-speed);
+}
+#image-upload-label:hover { background-color: #555; }
+#chat-input {
+    flex-grow: 1; background: none; border: none; color: var(--text-primary);
+    font-size: 1rem; padding: 10px;
+}
+#chat-input:focus { outline: none; }
+#send-btn {
+    background-color: var(--accent-color); border: none; border-radius: var(--border-radius);
+    color: var(--text-primary); padding: 10px 20px; cursor: pointer;
+}
+#image-preview-container { text-align: left; }
+#image-preview-container img {
+    max-height: 80px; border-radius: 5px; margin-bottom: 5px;
+    border: 1px solid var(--border-color);
+}

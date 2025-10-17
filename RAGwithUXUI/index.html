@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trợ lý AI Phân tích</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>⚙️ Bảng điều khiển</h2>
+            </div>
+            <div class="sidebar-content">
+                <button id="new-chat-btn" class="sidebar-btn">➕ Dự án mới</button>
+
+                <h3>📁 Các dự án</h3>
+                <div id="project-list">
+                    </div>
+
+                <hr>
+
+                <div id="pdf-drop-zone" class="file-uploader-container">
+                    <h3>1. Quản lý tài liệu</h3>
+                    <label for="pdf-upload" id="pdf-upload-label">
+                        <span id="pdf-upload-text">Kéo & thả file PDF vào đây</span>
+                        <small>hoặc</small>
+                        <div class="browse-btn-wrapper">
+                            <button class="browse-btn" onclick="document.getElementById('pdf-upload').click()">Chọn file</button>
+                        </div>
+                    </label>
+                    <input type="file" id="pdf-upload" accept=".pdf" style="display: none;">
+                </div>
+                <button id="learn-pdf-btn" class="sidebar-btn" style="display: none;">
+                    <span class="btn-text">Học File Này</span>
+                    <span class="btn-icon"></span>
+                </button>
+
+                <h4>Các file đã học:</h4>
+                <div id="learned-files-list">
+                    <small>Chưa có file nào trong dự án này.</small>
+                </div>
+
+                <hr>
+
+                <h3>📚 Nguồn trích dẫn</h3>
+                <div id="citation-container">
+                    <small>Nguồn trích dẫn cho câu trả lời mới nhất sẽ hiện ở đây.</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content" id="main-content">
+            <button id="toggle-sidebar-btn" class="icon-btn">«</button>
+
+            <header class="main-header">
+                <h1 id="project-title-header">🚀 Trợ lý AI Phân tích Tài liệu</h1>
+            </header>
+
+            <div id="chat-history">
+                </div>
+
+            <div class="chat-input-area">
+                <div id="image-preview-container"></div>
+                <div class="chat-input-form">
+                    <label for="image-upload" id="image-upload-label" title="Đính kèm ảnh">+</label>
+                    <input type="file" id="image-upload" accept="image/*" style="display: none;">
+                    <input type="text" id="chat-input" placeholder="Hỏi AI điều gì đó, hoặc dán (Ctrl+V) ảnh vào đây...">
+                    <button id="send-btn">Gửi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

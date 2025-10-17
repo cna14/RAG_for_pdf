@@ -1,0 +1,23 @@
+# Môi trường ảo Python
+.venv/
+venv/
+env_sach/
+env/
+
+# File biến môi trường - TUYỆT ĐỐI KHÔNG ĐẨY LÊN GITHUB
+.env
+
+# Thư mục dữ liệu người dùng và cache
+/pdf_uploads/
+/vector_stores/
+/extracted_images/
+
+# Cache của Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# File của các IDE
+.idea/
+.vscode/

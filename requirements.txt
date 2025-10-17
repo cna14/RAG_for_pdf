@@ -1,0 +1,10 @@
+streamlit
+langchain==0.1.20
+langchain-community==0.0.38
+huggingface-hub==0.20.3
+pypdf2
+pytesseract
+pdf2image
+InstructorEmbedding
+sentence-transformers
+faiss-cpu
