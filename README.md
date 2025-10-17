@@ -147,7 +147,7 @@ Bạn có hai cách để chạy dự án: phiên bản Client-Server hoàn ch�
 #### **a. Chạy Backend Server:**
 Mở một terminal, kích hoạt môi trường ảo (`.\.venv\Scripts\activate`) và chạy lệnh (hãy thay `backend_api.py` bằng tên file backend cuối cùng của bạn):
 ```bash
-python backend_api.py
+python backendwithGem.py
 ```
 Hãy để yên cửa sổ terminal này. Nó là bộ não của ứng dụng đang hoạt động.
 
